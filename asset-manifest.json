@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/saiyadhusain/static/css/main.0d03b4c6.chunk.css",
+    "main.js": "/saiyadhusain/static/js/main.1a93b0eb.chunk.js",
+    "main.js.map": "/saiyadhusain/static/js/main.1a93b0eb.chunk.js.map",
+    "runtime~main.js": "/saiyadhusain/static/js/runtime~main.17a86b3e.js",
+    "runtime~main.js.map": "/saiyadhusain/static/js/runtime~main.17a86b3e.js.map",
+    "static/js/2.50a6570c.chunk.js": "/saiyadhusain/static/js/2.50a6570c.chunk.js",
+    "static/js/2.50a6570c.chunk.js.map": "/saiyadhusain/static/js/2.50a6570c.chunk.js.map",
+    "index.html": "/saiyadhusain/index.html",
+    "precache-manifest.82e10d987221a0e808c8e2c31db486fc.js": "/saiyadhusain/precache-manifest.82e10d987221a0e808c8e2c31db486fc.js",
+    "service-worker.js": "/saiyadhusain/service-worker.js",
+    "static/css/main.0d03b4c6.chunk.css.map": "/saiyadhusain/static/css/main.0d03b4c6.chunk.css.map",
+    "static/media/experiences.png": "/saiyadhusain/static/media/experiences.3a463dfe.png",
+    "static/media/img.png": "/saiyadhusain/static/media/img.6e64dd9e.png",
+    "static/media/react-img.png": "/saiyadhusain/static/media/react-img.e7220f18.png",
+    "static/media/skills.png": "/saiyadhusain/static/media/skills.75a0e6a9.png"
+  }
+}
