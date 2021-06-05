@@ -1,5 +1,5 @@
 {
-  "short_name": "SaiyadHusain",
+  "short_name": "saiyadhusain",
   "name": "SaiyadHusain",
   "icons": [
     {
@@ -26,5 +26,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#C33764",
-  "background_color": "white"
+  "background_color": "#1d2671"
 }
