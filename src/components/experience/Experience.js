@@ -4,7 +4,7 @@ import experiencesimg from '../../assets/images/experiences.png';
 
 const experience = [
     { type: "2 Years of mobile application development exprience with angularjs and ionic." },
-    { type: "3 Years of web application development exprience with React JS & Redux." },
+    { type: "4 Years of web application development exprience with React JS & Redux." },
     { type: "2 Years of web application development exprience with JavaScript & PHP." }
 ];
 

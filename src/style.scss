@@ -162,7 +162,7 @@ body {
 .progress > .progress-type {
   position: absolute;
   left: 0px;
-  padding: 12px 30px 3px 10px;
+  padding: 2px 30px 3px 10px;
   color: white;
   background-color: #393ab2;
   width: 86px;
@@ -172,7 +172,7 @@ body {
 .progress > .progress-completed {
   position: relative;
     left: 86px;
-    padding: 12px 10px 2px;
+    padding: 2px 10px 2px;
     background: #5250ef;
     color: white;
     transition: width 2s;

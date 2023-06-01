@@ -9,9 +9,10 @@ const numbers = [
     { type: "JavaScript", level: 70, width: 70 },
     { type: "JQuery", level: 70, width: 70 },
     { type: "PHP", level: 50, width: 50 },
-    { type: "ReactJs", level: 60, width: 60 },
+    { type: "ReactJs", level: 70, width: 70 },
     { type: "AngularJs", level: 60, width: 60 },
     { type: "ionic", level: 60, width: 60 },
+    { type: "webpack", level: 50, width: 50 },
 ];
 
 

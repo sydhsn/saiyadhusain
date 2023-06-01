@@ -20,7 +20,7 @@ const Header = () => {
           <a className="navbar-brand" href="!#">
            <img src={Logo} className="logo d-none d-lg-block" alt="SAIYADHUSAIN"/>
           </a>
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul className="navbar-nav mr-auto mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
               <a className="nav-link text-a" href="#about">
                 About <span className="sr-only">(current)</span>
@@ -42,7 +42,7 @@ const Header = () => {
               </a>
             </li>
           </ul>
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+          <ul className="navbar-nav ml-auto mr-sm-2 mt-2 mt-lg-0">
             <li className="nav-item">
               <a className="nav-link text-a" href="tel:+918652431765">
                 <i className="fa fa-1x action-icon fa-phone-square d-none d-lg-block text-white"></i>
@@ -57,7 +57,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-      </nav>
+      </nav>   
     </React.Fragment>
   );
 };
