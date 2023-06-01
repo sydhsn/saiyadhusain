@@ -18,7 +18,10 @@ const About = () => {
               About Me,
             </p>
             <p className="h3">
-              Frontend & UI Developer. <br /> Mumbai-India.
+              Frontend & UI Developer.
+            </p>
+            <p className="h3">
+              Mumbai-India.
             </p>
             <p className="h6 text-muted">
               I am Saiyad Husain, a front-end and UI developer based in
