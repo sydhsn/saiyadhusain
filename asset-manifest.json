@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/saiyadhusain/static/css/main.bbecff66.css",
-    "main.js": "/saiyadhusain/static/js/main.68b68484.js",
+    "main.css": "/saiyadhusain/static/css/main.75f0ffb9.css",
+    "main.js": "/saiyadhusain/static/js/main.ce2ede55.js",
     "static/media/img.png": "/saiyadhusain/static/media/img.fbf7d7f17ce952277caf.png",
     "static/media/skills.png": "/saiyadhusain/static/media/skills.3babdf31722d017f5ca7.png",
     "static/media/experiences.png": "/saiyadhusain/static/media/experiences.b1529635437632a2f9da.png",
     "static/media/react-img.png": "/saiyadhusain/static/media/react-img.a727d0a75ae82882e420.png",
     "static/media/Resume.docx": "/saiyadhusain/static/media/Resume.a97256bfc364ba24134c.docx",
     "index.html": "/saiyadhusain/index.html",
-    "main.bbecff66.css.map": "/saiyadhusain/static/css/main.bbecff66.css.map",
-    "main.68b68484.js.map": "/saiyadhusain/static/js/main.68b68484.js.map"
+    "main.75f0ffb9.css.map": "/saiyadhusain/static/css/main.75f0ffb9.css.map",
+    "main.ce2ede55.js.map": "/saiyadhusain/static/js/main.ce2ede55.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbecff66.css",
-    "static/js/main.68b68484.js"
+    "static/css/main.75f0ffb9.css",
+    "static/js/main.ce2ede55.js"
   ]
 }
