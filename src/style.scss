@@ -168,6 +168,11 @@ body {
   width: 86px;
   height: 100%;
 }
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-collapse {
+    padding: 0 10px;
+}
+}
 
 .progress > .progress-completed {
   position: relative;
