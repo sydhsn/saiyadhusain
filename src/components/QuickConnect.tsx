@@ -9,8 +9,8 @@ const QuickConnect = () => {
           Quick Connect
         </h3>
         <p className="text-gray-600 dark:text-gray-300 mb-6">
-          Let's connect and collaborate! Reach out to me via LinkedIn, GitHub,
-          or WhatsApp.
+          Let&lsquo;s connect and collaborate! Reach out to me via LinkedIn,
+          GitHub, or WhatsApp.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* GitHub Button */}

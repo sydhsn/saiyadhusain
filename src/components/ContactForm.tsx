@@ -2,10 +2,16 @@
 
 import { useForm } from "react-hook-form";
 
-const ContactForm = () => {
-  const { register, handleSubmit, reset } = useForm();
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
-  const onSubmit = async (data: any) => {
+const ContactForm = () => {
+  const { register, handleSubmit, reset } = useForm<ContactFormData>();
+
+  const onSubmit = async (data: ContactFormData) => {
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: {

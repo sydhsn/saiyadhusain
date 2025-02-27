@@ -66,7 +66,7 @@ const Projects = () => {
           <div className="w-full md:w-1/1 p-6">
             <p className="text-lg text-gray-600 mb-2">Projects</p>
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Skills I've Worked With
+              Skills I&apos;ve Worked With
             </h2>
             <div className="flex gap-4 mb-8">
               <button

@@ -7,7 +7,7 @@ import * as tf from "@tensorflow/tfjs";
 const Chatbot = () => {
   const [message, setMessage] = useState("");
   const [reply, setReply] = useState("");
-  const [model, setModel] = useState<any>(null);
+  const [model, setModel] = useState<use.UniversalSentenceEncoder | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // Loading state
 
@@ -61,8 +61,8 @@ const Chatbot = () => {
 
       // Calculate cosine similarity
       const similarities = tf.matMul(
-        inputEmbedding,
-        questionEmbeddings,
+        tf.tensor2d(inputEmbedding.arraySync(), inputEmbedding.shape),
+        tf.tensor(questionEmbeddings.arraySync(), questionEmbeddings.shape),
         false,
         true
       );
