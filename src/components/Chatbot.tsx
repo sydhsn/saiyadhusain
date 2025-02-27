@@ -9,20 +9,15 @@ const Chatbot = () => {
   const [reply, setReply] = useState("");
   const [model, setModel] = useState<use.UniversalSentenceEncoder | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Lazy load the model only when the chatbot is opened
+  // Load model only when chatbot opens
   useEffect(() => {
     if (isOpen && !model) {
-      const loadModel = async () => {
-        const loadedModel = await use.load();
-        setModel(loadedModel);
-      };
-      loadModel();
+      use.load().then(setModel);
     }
   }, [isOpen, model]);
 
-  // Predefined questions and answers
   const qaPairs = [
     {
       question: "What are your skills?",
@@ -46,34 +41,28 @@ const Chatbot = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!model) return;
 
-    setIsLoading(true); // Start loading
-    setReply(""); // Clear previous reply
+    setIsLoading(true);
+    setReply("");
 
     try {
-      // Encode user input and predefined questions
       const inputEmbedding = await model.embed([message]);
       const questionEmbeddings = await model.embed(
-        qaPairs.map((pair) => pair.question)
+        qaPairs.map((q) => q.question)
       );
-
-      // Calculate cosine similarity
       const similarities = tf.matMul(
         tf.tensor2d(inputEmbedding.arraySync(), inputEmbedding.shape),
         tf.tensor(questionEmbeddings.arraySync(), questionEmbeddings.shape),
         false,
         true
       );
-
-      const closestIndex = similarities.argMax(1).dataSync()[0];
-      setReply(qaPairs[closestIndex].answer);
+      setReply(qaPairs[similarities.argMax(1).dataSync()[0]].answer);
     } catch (error) {
       console.error(error);
       setReply("Sorry, something went wrong. Please try again.");
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false);
     }
   };
 
@@ -101,23 +90,19 @@ const Chatbot = () => {
             />
             <button
               type="submit"
-              disabled={isLoading} // Disable button while loading
+              disabled={isLoading}
               className="mt-2 bg-[#3345A4] text-white p-2 rounded w-full hover:bg-[#ff0058] disabled:bg-gray-400"
             >
-              {isLoading ? "Sending..." : "Send"}
+              {isLoading ? "Typing..." : "Send"}
             </button>
           </form>
-          {isLoading ? (
-            <div className="bg-gray-700 p-4 rounded">
-              <p className="text-white">Typing...</p> {/* Loading indicator */}
-            </div>
-          ) : (
-            reply && (
-              <div className="bg-gray-700 p-4 rounded">
-                <p className="text-white">{reply}</p>
-              </div>
-            )
-          )}
+          <div className="bg-gray-700 p-4 rounded">
+            {isLoading ? (
+              <p className="text-white">⏳ Typing...</p>
+            ) : (
+              reply && <p className="text-white">{reply}</p>
+            )}
+          </div>
         </div>
       ) : (
         <button
