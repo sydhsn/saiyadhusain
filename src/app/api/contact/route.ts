@@ -22,9 +22,9 @@ export async function POST(request: Request) {
   try {
     await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: "Message sent successfully!" });
-  } catch (_) {
+  } catch (error) {
     return NextResponse.json(
-      { message: "Failed to send message." },
+      { message: error ?? "Failed to send message." },
       { status: 500 }
     );
   }
