@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import * as use from "@tensorflow-models/universal-sentence-encoder";
 import * as tf from "@tensorflow/tfjs";
+import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
 
 const Chatbot = () => {
   const [message, setMessage] = useState("");
@@ -11,7 +12,6 @@ const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Load model only when chatbot opens
   useEffect(() => {
     if (isOpen && !model) {
       use.load().then(setModel);
@@ -67,49 +67,53 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="fixed bottom-6 right-6 flex flex-col items-end">
       {isOpen ? (
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-96">
+        <div className="bg-gray-900 text-white p-6 rounded-lg shadow-2xl w-96 border border-gray-700">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-bold text-white">AI Career Chatbot</h3>
+            <h3 className="text-lg font-bold flex items-center space-x-2">
+              <FaRobot />
+              <span>AI Career Chatbot</span>
+            </h3>
             <button
               onClick={() => setIsOpen(false)}
               className="text-gray-400 hover:text-white"
             >
-              ✕
+              <FaTimes size={20} />
             </button>
           </div>
-          <form onSubmit={handleSubmit} className="mb-4">
+          <form onSubmit={handleSubmit} className="mb-4 flex space-x-2">
             <input
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ask me about my career..."
-              className="w-full p-2 rounded bg-gray-700 text-white"
+              placeholder="Ask me anything..."
+              className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring focus:ring-blue-500"
               required
             />
             <button
               type="submit"
               disabled={isLoading}
-              className="mt-2 bg-[#3345A4] text-white p-2 rounded w-full hover:bg-[#ff0058] disabled:bg-gray-400"
+              className="bg-blue-600 p-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-500 flex items-center justify-center"
             >
-              {isLoading ? "Typing..." : "Send"}
+              <FaPaperPlane size={18} />
             </button>
           </form>
-          <div className="bg-gray-700 p-4 rounded">
+          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 min-h-[50px]">
             {isLoading ? (
-              <p className="text-white">⏳ Typing...</p>
+              <p className="text-gray-400 animate-pulse">⏳ Typing...</p>
             ) : (
-              reply && <p className="text-white">{reply}</p>
+              reply && <p>{reply}</p>
             )}
           </div>
         </div>
       ) : (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-[#3345A4] text-white p-4 rounded-full shadow-lg hover:bg-[#ff0058]"
+          className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 flex items-center space-x-2"
         >
-          💬
+          <FaRobot size={20} />
+          <span>Chat</span>
         </button>
       )}
     </div>
