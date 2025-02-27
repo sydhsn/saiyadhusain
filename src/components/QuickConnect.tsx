@@ -1,4 +1,5 @@
 "use client";
+
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa"; // Icons from react-icons
 
 const QuickConnect = () => {
@@ -9,8 +10,8 @@ const QuickConnect = () => {
           Quick Connect
         </h3>
         <p className="text-gray-600 dark:text-gray-300 mb-6">
-          Let&lsquo;s connect and collaborate! Reach out to me via LinkedIn,
-          GitHub, or WhatsApp.
+          Let’s connect and collaborate! Reach out to me via LinkedIn, GitHub,
+          or WhatsApp.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* GitHub Button */}
@@ -29,7 +30,7 @@ const QuickConnect = () => {
             href="https://linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#3345A4] text-white px-6 py-3 rounded-lg hover:bg-[#ff0058] transition-colors duration-300 flex items-center justify-center space-x-2"
+            className="bg-[#0077B5] text-white px-6 py-3 rounded-lg hover:bg-[#005582] transition-colors duration-300 flex items-center justify-center space-x-2"
           >
             <FaLinkedin className="text-xl" />
             <span>LinkedIn</span>
@@ -37,7 +38,7 @@ const QuickConnect = () => {
 
           {/* WhatsApp Button */}
           <a
-            href="https://wa.me/+91-8652431765"
+            href="https://wa.me/918652431765" // Removed unnecessary `+` and `-`
             target="_blank"
             rel="noopener noreferrer"
             className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors duration-300 flex items-center justify-center space-x-2 col-span-2"
