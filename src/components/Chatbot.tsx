@@ -37,6 +37,46 @@ const Chatbot = () => {
       answer:
         "I have built a portfolio website, an AI chatbot, and several responsive web apps.",
     },
+    {
+      question: "Can you describe your experience as a Lead ReactJS Developer?",
+      answer:
+        "As a Lead ReactJS Developer, I have led cross-functional teams in designing and developing scalable web applications. I specialize in ReactJS, NestJS, and AWS, ensuring high performance and responsiveness. My responsibilities include architecting applications, mentoring junior developers, conducting code reviews, and implementing best practices for front-end development.",
+    },
+    {
+      question: "What are your key technical skills?",
+      answer:
+        "Frontend: ReactJS, Redux, HTML5, CSS3, SCSS, Bootstrap | Backend: NodeJS, NestJS | Database: MongoDB, AWS Redshift | Cloud & DevOps: AWS Cognito, Beanstalk, S3 | Testing: Jest | Version Control: Git, BitBucket",
+    },
+    {
+      question: "What methodologies do you follow in development?",
+      answer:
+        "I follow Agile (Scrum) methodologies, using tools like JIRA and Confluence for project tracking. I emphasize test-driven development (TDD) and continuous integration/deployment (CI/CD) for smooth and efficient development cycles.",
+    },
+    {
+      question: "Can you walk me through your experience with AWS?",
+      answer:
+        "I have worked with AWS services such as Cognito for authentication, Beanstalk for deployment, and S3 for file storage. In my projects, I integrated AWS services to enhance security, scalability, and performance.",
+    },
+    {
+      question: "Can you describe the Natixis Investment Managers project?",
+      answer:
+        "The Natixis Investment Managers project involved developing a ReactJS UI and NestJS backend with AWS integrations. My role included: Developing a dynamic and responsive UI using ReactJS, Implementing secure authentication with AWS Cognito, Setting up cloud storage using AWS S3, Conducting functional and integration testing using Jest.",
+    },
+    {
+      question: "How do you manage state in React applications?",
+      answer:
+        "I primarily use Redux for global state management and React Context API for lightweight state management. Depending on the project, I also implement React Query for efficient data fetching.",
+    },
+    {
+      question: "How do you handle API integration in React applications?",
+      answer:
+        "I use Axios or Fetch API for API calls, managing async operations with React Query or Redux Thunk. I also implement error handling and caching mechanisms to optimize performance.",
+    },
+    {
+      question: "How do you mentor junior developers?",
+      answer:
+        "I actively mentor junior developers by conducting knowledge-sharing sessions, pair programming, and providing guidance on best practices and design patterns.",
+    },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {

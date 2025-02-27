@@ -4,7 +4,7 @@ import { FaDownload, FaStar } from "react-icons/fa";
 import resumeImage from "@/assets/images/react-img.png";
 const Resume = () => {
   const handleDownload = () => {
-    const pdfUrl = "/path/to/your/resume.pdf";
+    const pdfUrl = "@/assets/resume.pdf";
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = "Resume.pdf";
