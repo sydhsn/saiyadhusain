@@ -94,23 +94,25 @@ const Chatbot = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-blue-600 p-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-500 flex items-center justify-center"
+              className="bg-[#3345A4] p-3 rounded-lg hover:bg-[#ff0058] disabled:bg-gray-500 flex items-center justify-center"
             >
               <FaPaperPlane size={18} />
             </button>
           </form>
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 min-h-[50px]">
-            {isLoading ? (
-              <p className="text-gray-400 animate-pulse">⏳ Typing...</p>
-            ) : (
-              reply && <p>{reply}</p>
-            )}
-          </div>
+          {!reply && !isLoading ? null : (
+            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 min-h-[50px]">
+              {isLoading ? (
+                <p className="text-gray-400 animate-pulse">⏳ Typing...</p>
+              ) : (
+                <p>{reply}</p>
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 flex items-center space-x-2"
+          className="bg-[#3345A4] text-white p-4 rounded-full shadow-lg hover:bg-[#ff0058] flex items-center space-x-2"
         >
           <FaRobot size={20} />
           <span>Chat</span>
