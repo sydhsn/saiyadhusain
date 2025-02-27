@@ -12,7 +12,7 @@ const About = () => {
         <div className="w-full md:w-1/2 p-6">
           <p className="text-lg text-gray-600 mb-2">About Me</p>
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Hello, I'm Md Saiyad Husain.
+            Hello, I&lsquo;m Md Saiyad Husain.
           </h2>
           <p className="text-gray-600 mb-6">
             I am a passionate developer with expertise in web development, UI/UX

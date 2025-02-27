@@ -20,7 +20,7 @@ const Chatbot = () => {
       };
       loadModel();
     }
-  }, [isOpen]);
+  }, [isOpen, model]);
 
   // Predefined questions and answers
   const qaPairs = [
