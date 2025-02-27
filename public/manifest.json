@@ -1,0 +1,21 @@
+{
+  "name": "Saiyad Husain Portfolio",
+  "short_name": "Saiyad Husain",
+  "description": "Saiyad Husain's portfolio showcasing AI chatbot features and frontend development.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
