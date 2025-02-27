@@ -18,8 +18,6 @@ This application features a **Progressive Web App (PWA)** setup and an **AI-powe
 
 🚀 [Live Demo](https://saiyadhusain.vercel.app/)
 
-![Portfolio Preview](https://saiyadhusain.vercel.app/demo.png)
-
 ---
 
 ## 🛠️ Tech Stack
