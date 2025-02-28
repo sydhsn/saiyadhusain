@@ -10,7 +10,6 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import { Chatbot } from "smart-ai-chatbot";
 export default function Home() {
-  // chatboat data set
   const qaPairs = [
     {
       question: "What is your name?",
