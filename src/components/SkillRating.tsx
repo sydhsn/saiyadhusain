@@ -15,7 +15,7 @@ const SkillRating = ({ name, rating }: SkillRatingProps) => {
         <span className="text-lg">{rating}%</span>
       </div>
       <motion.div
-        className="h-2 bg-gray-300 dark:bg-gray-700 rounded-full"
+        className="h-2 rounded-full"
         initial={{ width: 0 }}
         whileInView={{ width: `${rating}%` }}
         transition={{ duration: 1 }}

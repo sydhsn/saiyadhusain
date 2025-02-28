@@ -61,11 +61,11 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-2">
-      <section className="bg-white py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
           <div className="w-full md:w-1/1 p-6">
-            <p className="text-lg text-gray-600 mb-2">Projects</p>
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            <p className="text-lg mb-2">Projects</p>
+            <h2 className="text-3xl font-bold mb-4">
               Skills I&apos;ve Worked With
             </h2>
             <div className="flex gap-4 mb-8">
@@ -95,9 +95,7 @@ const Projects = () => {
               ))}
             </div>
             <div className="w-full p-6">
-              <p className="text-gray-600 mb-6">
-                Check out some of my recent projects:
-              </p>
+              <p className="mb-6">Check out some of my recent projects:</p>
               <a
                 href="https://github.com/yourusername"
                 target="_blank"

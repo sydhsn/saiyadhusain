@@ -12,13 +12,13 @@ const Skills = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-16" id="skills">
+    <section className="py-16" id="skills">
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         {/* Left: Text Content */}
         <div className="w-full md:w-1/2 p-6 order-1 md:order-1">
-          <div className="container mx-auto px-4 list-disc list-inside text-gray-600">
-            <p className="text-lg text-gray-600 mb-2">Skills</p>
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <div className="container mx-auto px-4 list-disc list-inside">
+            <p className="text-lg mb-2">Skills</p>
+            <h2 className="text-3xl font-bold mb-4">
               Skills based of rating and expertise
             </h2>
             <div className="space-y-4">

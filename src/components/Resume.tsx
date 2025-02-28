@@ -14,13 +14,13 @@ const Resume = () => {
   };
 
   return (
-    <section className="bg-gray-50" id="resume">
+    <section id="resume">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left: Text Content */}
           <div className="w-full md:w-1/2 p-10">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">My Resume</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-4xl font-bol mb-4">My Resume</h2>
+            <p className="mb-6">
               Download my resume to learn more about my experience, skills, and
               achievements.
             </p>
@@ -33,7 +33,7 @@ const Resume = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className="text-gray-600 ml-2">
+              <p className="ml-2">
                 Rated <span className="font-bold">5/5</span> by peers and
                 mentors.
               </p>

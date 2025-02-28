@@ -29,7 +29,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="bg-gray-100 dark:bg-gray-800">
+    <section id="contact">
       <div className="container mx-auto px-4">
         <form
           onSubmit={handleSubmit(onSubmit)}

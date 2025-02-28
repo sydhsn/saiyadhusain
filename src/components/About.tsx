@@ -4,17 +4,17 @@ import aboutImage from "@/assets/images/img.png";
 
 const About = () => {
   return (
-    <section className="bg-white py-6">
+    <section id="about">
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         <div className="w-full md:w-1/2">
           <Image src={aboutImage} alt="About" />
         </div>
         <div className="w-full md:w-1/2 p-6">
-          <p className="text-lg text-gray-600 mb-2">About Me</p>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          <p className="text-lg mb-2">About Me</p>
+          <h2 className="text-3xl font-bold  mb-4">
             Hello, I&lsquo;m Md Saiyad Husain.
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className=" mb-6">
             I am a passionate developer with expertise in web development, UI/UX
             design, and problem-solving. I love building scalable and
             user-friendly applications.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import * as use from "@tensorflow-models/universal-sentence-encoder";
 import * as tf from "@tensorflow/tfjs";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
@@ -12,12 +12,14 @@ const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Load the Universal Sentence Encoder model when the chatbot opens
   useEffect(() => {
     if (isOpen && !model) {
       use.load().then(setModel);
     }
   }, [isOpen, model]);
 
+  // QA pairs for the chatbot
   const qaPairs = [
     {
       question: "What are your skills?",
@@ -34,45 +36,68 @@ const Chatbot = () => {
     },
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!model) return;
+  // Handle form submission
+  const handleSubmit = useCallback(
+    async (e?: React.FormEvent) => {
+      if (e) e.preventDefault();
+      if (!model || !message.trim()) return;
 
-    setIsLoading(true);
+      setIsLoading(true);
+      setReply("");
+
+      try {
+        const inputEmbedding = await model.embed([message]);
+        const questionEmbeddings = await model.embed(
+          qaPairs.map((q) => q.question)
+        );
+        const similarities = tf.matMul(
+          tf.tensor2d(inputEmbedding.arraySync(), inputEmbedding.shape),
+          tf.tensor(questionEmbeddings.arraySync(), questionEmbeddings.shape),
+          false,
+          true
+        );
+        setReply(qaPairs[similarities.argMax(1).dataSync()[0]].answer);
+      } catch (error) {
+        console.error(error);
+        setReply("Sorry, something went wrong. Please try again.");
+      } finally {
+        setMessage("");
+        setIsLoading(false);
+      }
+    },
+    [model, message, qaPairs]
+  );
+
+  // Handle Enter key press
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === "Enter" && isOpen) {
+        handleSubmit();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [isOpen, handleSubmit]);
+
+  // Clear messages when the chatbot is closed
+  const handleClose = () => {
+    setIsOpen(false);
+    setMessage("");
     setReply("");
-
-    try {
-      const inputEmbedding = await model.embed([message]);
-      const questionEmbeddings = await model.embed(
-        qaPairs.map((q) => q.question)
-      );
-      const similarities = tf.matMul(
-        tf.tensor2d(inputEmbedding.arraySync(), inputEmbedding.shape),
-        tf.tensor(questionEmbeddings.arraySync(), questionEmbeddings.shape),
-        false,
-        true
-      );
-      setReply(qaPairs[similarities.argMax(1).dataSync()[0]].answer);
-    } catch (error) {
-      console.error(error);
-      setReply("Sorry, something went wrong. Please try again.");
-    } finally {
-      setMessage("");
-      setIsLoading(false);
-    }
   };
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col items-end">
       {isOpen ? (
-        <div className="bg-gray-900 text-white p-6 rounded-lg shadow-2xl w-96 border border-gray-700">
+        <div className="bg-gray-900 text-white p-6 rounded-lg shadow-2xl w-96 max-w-[90vw] border border-gray-700">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold flex items-center space-x-2">
               <FaRobot />
               <span>AI Career Chatbot</span>
             </h3>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleClose}
               className="text-gray-400 hover:text-white"
             >
               <FaTimes size={20} />
