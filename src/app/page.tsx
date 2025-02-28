@@ -1,5 +1,6 @@
+"use client";
+
 import About from "@/components/About";
-import Chatbot from "@/components/Chatbot";
 import Header from "@/components/Header";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
@@ -7,9 +8,8 @@ import ThemeToggle from "@/components/ThemeToggle";
 import Resume from "@/components/Resume";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
-
+import { Chatbot } from "smart-ai-chatbot";
 export default function Home() {
-  // chatboat data set
   const qaPairs = [
     {
       question: "What is your name?",
@@ -132,7 +132,7 @@ export default function Home() {
       <Projects />
       <Resume />
       <Contact />
-      <Chatbot dataset={qaPairs} title="AI Chatbot" />
+      <Chatbot dataset={qaPairs} title="My Chatbot" theme="dark" />
     </div>
   );
 }
