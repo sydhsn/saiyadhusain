@@ -9,8 +9,6 @@ This application features a **Progressive Web App (PWA)** setup and an **AI-powe
 ✅ **AI Chatbot** - Built using **TensorFlow.js**  
 ✅ **Next.js & TypeScript** - Modern web development stack  
 ✅ **Dark Mode Support** - Clean UI with light/dark themes  
-✅ **Firebase Authentication** - Secure user authentication  
-✅ **MongoDB with Mongoose** - For backend data storage
 
 ---
 
