@@ -14,6 +14,10 @@ This application features a **Progressive Web App (PWA)** setup and an **AI-powe
 
 ---
 
+## Screenshot 
+![image](https://github.com/user-attachments/assets/dbba75e5-54e5-46d1-a57c-35b749357236)
+
+
 ## 📸 Demo
 
 🚀 [Live Demo](https://saiyadhusain.vercel.app/)
