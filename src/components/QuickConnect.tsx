@@ -16,7 +16,7 @@ const QuickConnect = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* GitHub Button */}
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/sydhsn"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors duration-300 flex items-center justify-center space-x-2"
@@ -27,7 +27,7 @@ const QuickConnect = () => {
 
           {/* LinkedIn Button */}
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/sydhsn2020"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#0077B5] text-white px-6 py-3 rounded-lg hover:bg-[#005582] transition-colors duration-300 flex items-center justify-center space-x-2"
