@@ -2,10 +2,14 @@ import OpenAI from "openai";
 import { SYSTEM_PROMPT } from "@/data/profile";
 
 // Groq is OpenAI-compatible — we just point the SDK at its base URL.
-const client = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
-  baseURL: "https://api.groq.com/openai/v1",
-});
+// Created lazily inside the handler so a missing key doesn't crash the
+// build (the SDK throws on construction when no key is present).
+function getClient() {
+  return new OpenAI({
+    apiKey: process.env.GROQ_API_KEY,
+    baseURL: "https://api.groq.com/openai/v1",
+  });
+}
 
 // Groq's fast, free-tier-friendly model. Swap if you like.
 const MODEL = "llama-3.3-70b-versatile";
@@ -61,6 +65,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    const client = getClient();
     const stream = await client.chat.completions.create({
       model: MODEL,
       stream: true,
