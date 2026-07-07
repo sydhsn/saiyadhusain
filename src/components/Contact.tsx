@@ -1,20 +1,24 @@
 import ContactForm from "@/components/ContactForm";
 import QuickConnect from "./QuickConnect";
+import Reveal from "@/components/Reveal";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-2">
+    <section id="contact" className="py-14">
       <div className="container mx-auto px-4">
-        <p className="text-lg text-center mb-2">Contact Me</p>
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left: Contact Form */}
-          <div className="w-full md:w-1/2">
+        <Reveal className="mb-10 text-center">
+          <span className="eyebrow">Contact</span>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+            Get in <span className="text-gradient">touch</span>
+          </h2>
+        </Reveal>
+        <div className="grid items-start gap-8 md:grid-cols-2">
+          <Reveal>
             <ContactForm />
-          </div>
-          {/* Right: QuickConnect */}
-          <div className="w-full md:w-1/2">
+          </Reveal>
+          <Reveal delay={0.1}>
             <QuickConnect />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -11,22 +11,23 @@ interface ChatbotProps {
 type Msg = { role: "user" | "assistant"; content: string };
 
 const themes = {
+  // Kept in sync with the design tokens in src/styles/globals.css
   dark: {
-    backgroundColor: "#1A1A1A",
-    buttonColor: "#4CAF50",
-    textColor: "#FFFFFF",
-    inputBackgroundColor: "#121212",
-    borderColor: "#4CAF50",
-    bubbleUser: "#4CAF50",
+    backgroundColor: "#1f2937", // surface
+    buttonColor: "#5468d4", // primary (dark)
+    textColor: "#ededed", // content
+    inputBackgroundColor: "#111827", // canvas
+    borderColor: "#374151", // border
+    bubbleUser: "#5468d4", // primary (dark)
     closeIconColor: "text-gray-400 hover:text-white",
   },
   light: {
-    backgroundColor: "#FFFFFF",
-    buttonColor: "#2196F3",
-    textColor: "#000000",
-    inputBackgroundColor: "#F5F5F5",
-    borderColor: "#2196F3",
-    bubbleUser: "#2196F3",
+    backgroundColor: "#FFFFFF", // surface
+    buttonColor: "#3345a4", // primary
+    textColor: "#171717", // content
+    inputBackgroundColor: "#f3f4f6", // surface-2
+    borderColor: "#e5e7eb", // border
+    bubbleUser: "#3345a4", // primary
     closeIconColor: "text-gray-600 hover:text-gray-900",
   },
 };
@@ -101,6 +102,15 @@ const Chatbot = ({ title = "AI Assistant", theme = "dark" }: ChatbotProps) => {
     }
   };
 
+  // Wipe the conversation on close so the next visitor
+  // (e.g. on a shared device) starts fresh.
+  const closeChat = () => {
+    setIsOpen(false);
+    setMessages([GREETING]);
+    setInput("");
+    setIsLoading(false);
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {isOpen ? (
@@ -120,7 +130,11 @@ const Chatbot = ({ title = "AI Assistant", theme = "dark" }: ChatbotProps) => {
               <FaRobot />
               <span>{title}</span>
             </h3>
-            <button onClick={() => setIsOpen(false)} className={t.closeIconColor}>
+            <button
+              onClick={closeChat}
+              aria-label="Close and clear chat"
+              className={t.closeIconColor}
+            >
               <FaTimes size={20} />
             </button>
           </div>

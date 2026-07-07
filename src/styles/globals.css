@@ -2,6 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Design tokens — single source of truth for the whole app.
+   Stored as "R G B" channels so Tailwind opacity modifiers work
+   (e.g. bg-primary/30). Consumed via semantic colors in
+   tailwind.config.ts: bg-canvas, bg-surface, text-primary…
+   Light values in :root, dark values in .dark (theme toggle
+   adds `.dark` to <html>).
+   ============================================================ */
+:root {
+  --color-canvas: 247 248 252;
+  --color-surface: 255 255 255;
+  --color-surface-2: 241 243 249;
+  --color-border: 229 231 235;
+
+  --color-content: 20 24 31;
+  --color-content-muted: 85 96 111;
+
+  --color-primary: 51 69 164;
+  --color-primary-hover: 41 56 138;
+  --color-accent: 255 0 88;
+  --color-accent-hover: 214 0 74;
+
+  --glass-bg: rgba(255, 255, 255, 0.72);
+}
+
+.dark {
+  --color-canvas: 11 16 32;
+  --color-surface: 19 26 46;
+  --color-surface-2: 28 37 64;
+  --color-border: 38 49 80;
+
+  --color-content: 233 237 245;
+  --color-content-muted: 154 166 189;
+
+  --color-primary: 109 128 255;
+  --color-primary-hover: 132 147 255;
+  --color-accent: 255 61 127;
+  --color-accent-hover: 255 100 154;
+
+  --glass-bg: rgba(19, 26, 46, 0.6);
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--color-canvas));
+  color: rgb(var(--color-content));
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------- Primitives ------------------------- */
+@layer components {
+  .card {
+    @apply bg-surface rounded-2xl shadow-card border border-border;
+  }
+  .glass-card {
+    @apply rounded-2xl border border-border shadow-card backdrop-blur-md;
+    background: var(--glass-bg);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-medium
+           transition-all duration-300 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-accent;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-hover hover:shadow-lg hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply btn border border-border bg-surface text-content hover:border-primary hover:text-primary;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-border bg-surface-2
+           px-3 py-1 text-sm text-content-muted transition-colors duration-200
+           hover:border-primary hover:text-primary;
+  }
+  .eyebrow {
+    @apply inline-block text-sm font-semibold uppercase tracking-widest text-primary;
+  }
+}
+
+/* ------------------------- Utilities -------------------------- */
+@layer utilities {
+  /* Kept the class name (used widely) but now a solid brand color —
+     it stays theme-aware via the primary token in light/dark. */
+  .text-gradient {
+    color: rgb(var(--color-primary));
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(var(--color-border)) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-border)) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 72%);
+  }
+  .blob {
+    filter: blur(60px);
+    animation: float 9s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-24px) scale(1.06); }
 }

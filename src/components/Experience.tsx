@@ -1,49 +1,56 @@
-"use client";
-import experiencesimg from "@/assets/images/experiences.png";
-import Image from "next/image";
-
-const experience = [
-  {
-    type: "2 Years of web application development exprience with JavaScript & PHP.",
-  },
-  {
-    type: "2 Years of mobile application development exprience with angularjs and ionic.",
-  },
-  {
-    type: "5 Years of web application development exprience with React JS & Redux.",
-  },
-  {
-    type: "1 Years of mobile application development exprience with React Native.",
-  },
-  { type: "Currently working on React Native & React JS and AWS, AI & ML." },
-];
+import Reveal from "@/components/Reveal";
+import { PROFILE } from "@/data/profile";
 
 const Experience = () => {
   return (
-    <section className="py-16" id="experience">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center">
-          {/* Left: Image */}
-          <div className="w-full md:w-1/2">
-            <Image
-              src={experiencesimg}
-              alt="Experiences"
-              width={350}
-              height={350}
-            />
-          </div>
-          {/* Right: Text Content */}
-          <div className="flex-grow p-6">
-            <p className="text-lg mb-2">Experience</p>
-            <h2 className="text-3xl font-bold mb-4">Skill-Based Experience</h2>
-            <ul className="space-y-4">
-              {experience.map((item, index) => (
-                <li key={index}>
-                  <span className="text-[#3345A4] mr-2">•</span>
-                  {item.type}
-                </li>
-              ))}
-            </ul>
+    <section className="py-14" id="experience">
+      <div className="container mx-auto px-4">
+        <Reveal className="mb-10 text-center">
+          <span className="eyebrow">Experience</span>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+            A decade of <span className="text-gradient">shipping at scale</span>
+          </h2>
+        </Reveal>
+
+        <div className="relative mx-auto max-w-3xl">
+          {/* Vertical line */}
+          <div className="absolute left-4 top-2 bottom-2 w-px bg-border md:left-1/2" />
+
+          <div className="space-y-8">
+            {PROFILE.experience.map((job, i) => (
+              <Reveal
+                key={job.company}
+                delay={i * 0.05}
+                className={`relative flex flex-col gap-2 pl-12 md:w-1/2 md:pl-0 ${
+                  i % 2 === 0
+                    ? "md:ml-auto md:pl-12 md:text-left"
+                    : "md:mr-auto md:pr-12 md:text-right"
+                }`}
+              >
+                {/* Dot */}
+                <span
+                  className={`absolute left-4 top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-canvas ${
+                    job.current ? "bg-accent" : "bg-primary"
+                  } md:left-auto ${i % 2 === 0 ? "md:-left-6" : "md:-right-6 md:left-auto md:translate-x-1/2"}`}
+                />
+                <div className="card p-6 transition-shadow duration-300 hover:shadow-card-hover">
+                  <div className="mb-1 flex flex-wrap items-center gap-2">
+                    <span className="chip !border-primary/40 !bg-primary/10 !text-primary">
+                      {job.period}
+                    </span>
+                    {job.current && (
+                      <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-xs font-semibold text-accent">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-bold">{job.role}</h3>
+                  <p className="font-medium text-primary">{job.company}</p>
+                  <p className="mt-2 text-sm text-content-muted">{job.note}</p>
+                  <p className="mt-2 text-xs text-content-muted">📍 {job.location}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

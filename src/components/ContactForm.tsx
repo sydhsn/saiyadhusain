@@ -29,45 +29,34 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact">
-      <div className="container mx-auto px-4">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="max-w-lg mx-auto bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg"
-        >
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
-              Email Me
-            </h3>
-            <input
-              {...register("name")}
-              placeholder="Your Name"
-              className="w-full p-2 rounded bg-gray-100 dark:bg-gray-600"
-              required
-            />
-            <input
-              {...register("email")}
-              placeholder="Your Email"
-              className="w-full p-2 rounded bg-gray-100 dark:bg-gray-600"
-              required
-            />
-            <textarea
-              {...register("message")}
-              placeholder="Your Message"
-              className="w-full p-2 rounded bg-gray-100 dark:bg-gray-600"
-              rows={5}
-              required
-            />
-            <button
-              type="submit"
-              className="w-full bg-[#3345A4] text-white p-2 rounded hover:bg-[#ff0058]"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
+    <form onSubmit={handleSubmit(onSubmit)} className="card p-6 sm:p-8">
+      <div className="space-y-4">
+        <h3 className="mb-2 text-xl font-bold text-content">Send a message</h3>
+        <input
+          {...register("name")}
+          placeholder="Your Name"
+          className="w-full rounded-lg border border-border bg-surface-2 p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        />
+        <input
+          {...register("email")}
+          type="email"
+          placeholder="Your Email"
+          className="w-full rounded-lg border border-border bg-surface-2 p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        />
+        <textarea
+          {...register("message")}
+          placeholder="Your Message"
+          className="w-full rounded-lg border border-border bg-surface-2 p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+          rows={5}
+          required
+        />
+        <button type="submit" className="btn-primary w-full rounded-lg py-3">
+          Send Message
+        </button>
       </div>
-    </section>
+    </form>
   );
 };
 
