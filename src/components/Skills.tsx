@@ -1,40 +1,62 @@
 import SkillRating from "@/components/SkillRating";
-import Image from "next/image";
-import skillsImage from "@/assets/images/skills.png";
+import Reveal from "@/components/Reveal";
+import { PROFILE } from "@/data/profile";
 
 const Skills = () => {
-  const skills = [
-    { name: "Next.js", rating: 90 },
-    { name: "TailwindCSS", rating: 95 },
-    { name: "TypeScript", rating: 85 },
-    { name: "React", rating: 90 },
-    { name: "Node.js", rating: 80 },
-  ];
-
   return (
-    <section className="py-16" id="skills">
-      <div className="container mx-auto flex flex-col md:flex-row items-center">
-        {/* Left: Text Content */}
-        <div className="w-full md:w-1/2 p-6 order-1 md:order-1">
-          <div className="container mx-auto px-4 list-disc list-inside">
-            <p className="text-lg mb-2">Skills</p>
-            <h2 className="text-3xl font-bold mb-4">
-              Skills based of rating and expertise
-            </h2>
-            <div className="space-y-4">
-              {skills.map((skill, index) => (
+    <section className="py-14" id="skills">
+      <div className="container mx-auto px-4">
+        <Reveal className="mb-10 text-center">
+          <span className="eyebrow">Skills</span>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+            Built for <span className="text-gradient">scale &amp; speed</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-content-muted">
+            {PROFILE.summaryShort}
+          </p>
+        </Reveal>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Proficiency bars */}
+          <Reveal className="card p-6">
+            <h3 className="mb-6 text-lg font-semibold">Core proficiency</h3>
+            <div className="space-y-5">
+              {PROFILE.topSkills.map((skill) => (
                 <SkillRating
-                  key={index}
+                  key={skill.name}
                   name={skill.name}
-                  rating={skill.rating}
+                  rating={skill.level}
                 />
               ))}
             </div>
-          </div>
-        </div>
-        {/* Right: Beautiful Image */}
-        <div className="w-full md:w-1/2 order-2 md:order-2 flex justify-end">
-          <Image src={skillsImage} alt="Skills" width={350} height={350} />
+          </Reveal>
+
+          {/* Tech stack cloud */}
+          <Reveal delay={0.1} className="card p-6">
+            <h3 className="mb-6 text-lg font-semibold">Tech stack</h3>
+            <div className="flex flex-wrap gap-2.5">
+              {PROFILE.techStack.map((tech) => (
+                <span key={tech} className="chip">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="mt-8 border-t border-border pt-6">
+              <h4 className="mb-3 text-sm font-semibold text-content-muted">
+                Top skills
+              </h4>
+              <div className="flex flex-wrap gap-2.5">
+                {["Team Leadership", "Redux.js", "AWS"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

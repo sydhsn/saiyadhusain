@@ -1,25 +1,31 @@
 "use client";
-import About from "@/components/About";
 import Header from "@/components/Header";
-import Projects from "@/components/Projects";
+import About from "@/components/About";
 import Skills from "@/components/Skills";
-import ThemeToggle from "@/components/ThemeToggle";
-import Resume from "@/components/Resume";
 import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Projects from "@/components/Projects";
+import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
 import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen">
       <Header />
       <ThemeToggle />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Resume />
-      <Contact />
+      <main>
+        <About />
+        <Skills />
+        <Experience />
+        <Education />
+        <Projects />
+        <Resume />
+        <Contact />
+      </main>
+      <Footer />
       <Chatbot title="Saiyad's Assistant" theme="dark" />
     </div>
   );

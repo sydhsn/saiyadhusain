@@ -1,17 +1,46 @@
 import "@/styles/globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
-import Head from "next/head";
+import { PROFILE } from "@/data/profile";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Saiyad Husain | AI & Frontend Developer Portfolio",
-  description:
-    "Saiyad Husain's portfolio showcasing AI chatbot features, frontend development expertise, and cutting-edge web technologies.",
-  keywords:
-    "Saiyad Husain, AI, Frontend Developer, Full-Stack Developer, ReactJS, Next.js, JavaScript, TypeScript, TensorFlow.js, Web Development, Machine Learning, Portfolio",
+  title: `${PROFILE.name} | ${PROFILE.role}`,
+  description: PROFILE.summaryShort,
+  keywords: [
+    PROFILE.name,
+    "Senior Frontend Tech Lead",
+    "React.js",
+    "Next.js",
+    "TypeScript",
+    "NestJS",
+    "Frontend Architecture",
+    "AWS",
+    "E-Commerce",
+    "Portfolio",
+  ],
+  authors: [{ name: PROFILE.name, url: PROFILE.links.linkedin }],
+  // Keep the site out of search engines (no indexing, no following links).
+  robots: { index: false, follow: false, nocache: true },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: PROFILE.name,
+  },
+  openGraph: {
+    title: `${PROFILE.name} | ${PROFILE.role}`,
+    description: PROFILE.summaryShort,
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#3345a4" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1020" },
+  ],
 };
 
 export default function RootLayout({
@@ -20,41 +49,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <Head>
-        <meta name="theme-color" content="#000000" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-        <meta
-          name="apple-mobile-web-app-title"
-          content="Saiyad Husain Portfolio"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-      </Head>
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID`}
-          strategy="afterInteractive"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();`,
+          }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'YOUR_TRACKING_ID');
-          `}
-        </Script>
       </head>
-      <body
-        className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white`}
-      >
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

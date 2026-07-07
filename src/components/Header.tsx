@@ -1,92 +1,77 @@
 "use client";
 
-import Image from "next/image";
-import logo from "@/assets/logo.png";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { PROFILE } from "@/data/profile";
+
+const NAV = [
+  { href: "#about", label: "Home" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="sticky top-0 bg-[#3345A4] dark:bg-gray-900 p-4 z-50 shadow-lg">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Left: Gradient Text Logo */}
-        <div className="flex items-center space-x-4">
-          <Image src={logo} alt="Logo" className="h-auto w-auto" />
-        </div>
+    <header className="sticky top-0 z-50 border-b border-border backdrop-blur-md bg-[var(--glass-bg)]">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3">
+        {/* Brand */}
+        <a href="#about" className="flex items-center gap-2">
+          <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary font-bold text-white">
+            SH
+          </span>
+          <span className="hidden font-bold sm:block">{PROFILE.name}</span>
+        </a>
 
-        {/* Right: Navigation Links */}
-        <nav className="hidden md:flex space-x-6">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-7 md:flex">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-content-muted transition-colors hover:text-primary"
+            >
+              {item.label}
+            </a>
+          ))}
           <a
-            href="#about"
-            className="text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300"
+            href={PROFILE.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary rounded-full px-4 py-2 text-sm"
           >
-            About
-          </a>
-          <a
-            href="#skills"
-            className="text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300"
-          >
-            Skills
-          </a>
-          <a
-            href="#projects"
-            className="text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300"
-          >
-            Projects
-          </a>
-          <a
-            href="#contact"
-            className="text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300"
-          >
-            Contact
+            Hire Me
           </a>
         </nav>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={toggleMenu}
-            className="text-white focus:outline-none"
-          >
-            <FaBars size={24} />
-          </button>
-        </div>
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setIsMenuOpen((v) => !v)}
+          className="text-content md:hidden"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+        </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#3345A4] dark:bg-gray-900 p-4">
-          <a
-            href="#about"
-            className="block text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300 py-2"
-          >
-            About
-          </a>
-          <a
-            href="#skills"
-            className="block text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300 py-2"
-          >
-            Skills
-          </a>
-          <a
-            href="#projects"
-            className="block text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300 py-2"
-          >
-            Projects
-          </a>
-          <a
-            href="#contact"
-            className="block text-white dark:text-gray-300 hover:text-[#ff0058] dark:hover:text-[#ff0058] transition-colors duration-300 py-2"
-          >
-            Contact
-          </a>
-        </div>
+        <nav className="border-t border-border bg-surface px-4 py-3 md:hidden">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="block py-2 font-medium text-content-muted transition-colors hover:text-primary"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       )}
     </header>
   );

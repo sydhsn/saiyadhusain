@@ -1,57 +1,38 @@
 "use client";
-import Image from "next/image";
-import { FaDownload, FaStar } from "react-icons/fa";
-import resumeImage from "@/assets/images/react-img.png";
+import { FaDownload } from "react-icons/fa";
+import Reveal from "@/components/Reveal";
+import { PROFILE } from "@/data/profile";
+
 const Resume = () => {
   const handleDownload = () => {
-    const pdfUrl = "/resume.pdf"; // Corrected path
     const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.download = "Resume.pdf";
+    link.href = "/resume.pdf";
+    link.download = "Md-Saiyad-Husain-Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   return (
-    <section id="resume">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          {/* Left: Text Content */}
-          <div className="w-full md:w-1/2 p-10">
-            <h2 className="text-4xl font-bol mb-4">My Resume</h2>
-            <p className="mb-6">
-              Download my resume to learn more about my experience, skills, and
-              achievements.
-            </p>
-            {/* Testimonial Section */}
-            <div className="flex items-center mb-6">
-              <div className="flex items-center space-x-1 text-yellow-400">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-              </div>
-              <p className="ml-2">
-                Rated <span className="font-bold">5/5</span> by peers and
-                mentors.
-              </p>
-            </div>
-            {/* Download Button */}
-            <button
-              onClick={handleDownload}
-              className="bg-[#3345A4] text-white px-6 py-3 rounded-full hover:bg-[#ff0058] transition-colors duration-300 flex items-center space-x-2"
-            >
-              <FaDownload />
-              <span>Download Resume</span>
-            </button>
-          </div>
-          {/* Right: Beautiful Image */}
-          <div className="w-full md:w-1/2 order-2 md:order-2 flex justify-end">
-            <Image src={resumeImage} alt="Resume" width={350} height={350} />
-          </div>
-        </div>
+    <section id="resume" className="py-14">
+      <div className="container mx-auto px-4">
+        <Reveal className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl bg-primary p-8 text-center text-white md:p-12">
+          <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
+          <h2 className="text-3xl font-bold sm:text-4xl">
+            Let&apos;s build something that matters
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/90">
+            Open to Senior Frontend, Full-Stack, and Tech Lead roles. Grab my
+            résumé for the full picture — {PROFILE.stats[0].value} years,{" "}
+            {PROFILE.experience.length} enterprise employers, {PROFILE.location}.
+          </p>
+          <button
+            onClick={handleDownload}
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 font-semibold text-primary transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            <FaDownload /> Download Résumé
+          </button>
+        </Reveal>
       </div>
     </section>
   );

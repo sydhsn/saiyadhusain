@@ -10,20 +10,21 @@ interface SkillRatingProps {
 const SkillRating = ({ name, rating }: SkillRatingProps) => {
   return (
     <div className="w-full">
-      <div className="flex justify-between mb-1">
-        <span className="text-lg">{name}</span>
-        <span className="text-lg">{rating}%</span>
+      <div className="mb-1.5 flex justify-between">
+        <span className="font-medium">{name}</span>
+        <span className="text-sm text-content-muted">{rating}%</span>
       </div>
-      <motion.div
-        className="h-2 rounded-full"
-        initial={{ width: 0 }}
-        whileInView={{ width: `${rating}%` }}
-        transition={{ duration: 1 }}
-      >
-        <div className="h-2 bg-[#3345A4] rounded-full"></div>
-      </motion.div>
+      <div className="h-2.5 w-full overflow-hidden rounded-full bg-surface-2">
+        <motion.div
+          className="h-full rounded-full bg-primary"
+          initial={{ width: 0 }}
+          whileInView={{ width: `${rating}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+        />
+      </div>
     </div>
   );
 };
 
-export default SkillRating; // Correct default export
+export default SkillRating;
